@@ -14,7 +14,7 @@ function App() {
   const [review, setReview] = useState(``);
 
   async function codeReview() {
-    const resp = await axios.post("http://localhost:3000/ai/get-response", {code});
+    const resp = await axios.post("https://code-reviewer-z9xy.onrender.com/ai/get-response", {code});
     if (!resp.data) {
       setReview("Something went wrong");
     } else {
