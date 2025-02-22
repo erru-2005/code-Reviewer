@@ -1,0 +1,87 @@
+* {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
+main {
+  height: 100%;
+  width: 100%;
+  padding: 1rem;
+  display: flex;
+  gap: 0.6rem;
+}
+
+main .left,
+main .right {
+  height: 100%;
+  flex-basis: 50%;
+  border-radius: 0.7rem;
+  background-color: rgb(100, 157, 207);
+}
+
+main .left {
+  background-color: #090e13;
+  position: relative;
+  border: 0.1rem solid aqua;
+  padding: 1rem 0rem 1rem 1rem;
+}
+
+main .right {
+  background-color:#040404;
+  border: 0.1rem solid purple;
+  padding: 1.3rem;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+
+/* Custom scrollbar for WebKit-based browsers */
+main .left .code::-webkit-scrollbar {
+  width: 6px; /* Width of the scrollbar */
+}
+
+main .left .code::-webkit-scrollbar-track {
+  background: #090e13; /* Background of the scrollbar track */
+}
+
+main .left .code::-webkit-scrollbar-thumb {
+  background-color: #34495e; /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Rounded corners of the scrollbar thumb */
+  border: 2px solid #090e13; /* Padding around the scrollbar thumb */
+}
+
+/* Custom scrollbar for Firefox */
+main .left .code {
+  scrollbar-width: thin; /* Make the scrollbar thin */
+  scrollbar-color: #34495e #090e13; /* Color of the scrollbar thumb and track */
+}
+
+.btn {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  cursor: pointer;
+  user-select: none;
+  display: inline-block;
+  background-color: black;
+  padding: 0.5rem 2rem;
+  border-radius: 10px;
+}
+
+main .left .code pre, .left .code {
+  background-color: #090e13;
+  margin: 0%;
+  padding: 0%;
+  width: 100%;
+  height: 100%;
+}
+
+textarea.npm__react-simple-code-editor__textarea {
+  outline: none;
+}
