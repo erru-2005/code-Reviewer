@@ -51,6 +51,9 @@ function App() {
                 overflow: "auto",
                 width: "100%",
                 height: "100%",
+                borderRadius: "0.3rem",
+                backgroundColor: "#090e13",
+                color: "#ecf0f1",
               }}
             />
           </div>
