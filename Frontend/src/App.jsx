@@ -36,7 +36,7 @@ function App() {
   return (
     <>
       <main>
-        {/* Left Panel (Code Editor) */}
+        {/* Left Panel */}
         <div className="left">
           <h2 className="panel-title">Add Code Here to Review</h2>
           <div className="code">
@@ -51,18 +51,15 @@ function App() {
                 overflow: "auto",
                 width: "100%",
                 height: "100%",
-                borderRadius: "0.3rem",
-                backgroundColor: "#090e13",
-                color: "#ecf0f1",
               }}
             />
           </div>
-          <button className="btn" onClick={codeReview}>
+          <div className="btn" onClick={codeReview}>
             Review
-          </button>
+          </div>
         </div>
 
-        {/* Right Panel (Output) */}
+        {/* Right Panel */}
         <div className="right">
           <h2 className="panel-title">Output</h2>
           <ErrorBoundary>
