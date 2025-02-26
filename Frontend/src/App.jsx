@@ -54,9 +54,9 @@ function App() {
               }}
             />
           </div>
-          <div className="btn" onClick={codeReview}>
+          <button className="btn" onClick={codeReview}>
             Review
-          </div>
+          </button>
         </div>
 
         {/* Right Panel */}
