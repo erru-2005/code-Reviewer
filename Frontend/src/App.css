@@ -1,6 +1,6 @@
 * {
-  margin: 0%;
-  padding: 0%;
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -15,53 +15,76 @@ main {
   padding: 1rem;
   display: flex;
   gap: 0.6rem;
+  flex-wrap: wrap;
 }
 
+/* Left and Right Panels */
 main .left,
 main .right {
   height: 100%;
   flex-basis: 50%;
   border-radius: 0.7rem;
   background-color: rgb(100, 157, 207);
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 main .left {
   background-color: #090e13;
-  position: relative;
   border: 0.1rem solid aqua;
-  padding: 1rem 0rem 1rem 1rem;
+  padding: 1rem;
 }
 
 main .right {
-  background-color:#040404;
+  background-color: #040404;
   border: 0.1rem solid purple;
   padding: 1.3rem;
-  height: 100%;
-  width: 100%;
   overflow: auto;
 }
 
-/* Custom scrollbar for WebKit-based browsers */
+/* Responsive Design */
+@media (max-width: 1024px) {
+  main {
+    flex-direction: column;
+  }
+
+  main .left,
+  main .right {
+    flex-basis: 100%;
+    height: auto;
+  }
+}
+
+/* Panel Titles */
+.panel-title {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.8rem;
+}
+
+/* Custom scrollbar */
 main .left .code::-webkit-scrollbar {
-  width: 6px; /* Width of the scrollbar */
+  width: 6px;
 }
 
 main .left .code::-webkit-scrollbar-track {
-  background: #090e13; /* Background of the scrollbar track */
+  background: #090e13;
 }
 
 main .left .code::-webkit-scrollbar-thumb {
-  background-color: #34495e; /* Color of the scrollbar thumb */
-  border-radius: 10px; /* Rounded corners of the scrollbar thumb */
-  border: 2px solid #090e13; /* Padding around the scrollbar thumb */
+  background-color: #34495e;
+  border-radius: 10px;
+  border: 2px solid #090e13;
 }
 
-/* Custom scrollbar for Firefox */
 main .left .code {
-  scrollbar-width: thin; /* Make the scrollbar thin */
-  scrollbar-color: #34495e #090e13; /* Color of the scrollbar thumb and track */
+  scrollbar-width: thin;
+  scrollbar-color: #34495e #090e13;
 }
 
+/* Button */
 .btn {
   position: absolute;
   bottom: 1rem;
@@ -72,16 +95,40 @@ main .left .code {
   background-color: black;
   padding: 0.5rem 2rem;
   border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
 }
 
-main .left .code pre, .left .code {
+/* Code editor */
+main .left .code pre,
+.left .code {
   background-color: #090e13;
-  margin: 0%;
-  padding: 0%;
+  margin: 0;
+  padding: 0;
   width: 100%;
   height: 100%;
 }
 
 textarea.npm__react-simple-code-editor__textarea {
   outline: none;
+}
+
+/* Dark Skeleton Loader */
+.skeleton-loader {
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(90deg, #2c2c2c 25%, #3b3b3b 50%, #2c2c2c 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite ease-in-out;
+  border-radius: 10px;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
