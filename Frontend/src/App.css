@@ -1,4 +1,3 @@
-/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -8,137 +7,137 @@
 html, body, #root {
   height: 100%;
   width: 100%;
-  font-family: "Arial", sans-serif;
-  background-color: #1a1a1a;
-  color: white;
 }
 
-/* Layout - Responsive Design */
 main {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+  height: 100%;
+  width: 100%;
   padding: 1rem;
-  height: 100vh;
-  transition: all 0.3s ease-in-out;
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
 }
 
 /* Left and Right Panels */
-.left, .right {
+main .left,
+main .right {
   flex: 1;
-  min-height: 50vh;
-  border-radius: 10px;
-  padding: 1rem;
-  transition: all 0.3s ease-in-out;
-}
-
-/* Code Section */
-.left {
-  background-color: #090e13;
-  border: 2px solid aqua;
+  border-radius: 0.7rem;
+  background-color: rgb(100, 157, 207);
   display: flex;
   flex-direction: column;
   position: relative;
+  min-height: 50vh; /* Ensure both sections have enough height */
 }
 
-/* Output Section */
-.right {
+main .left {
+  background-color: #090e13;
+  border: 0.1rem solid aqua;
+  padding: 1rem;
+}
+
+main .right {
   background-color: #040404;
-  border: 2px solid purple;
+  border: 0.1rem solid purple;
+  padding: 1.3rem;
   overflow: auto;
 }
 
-/* Mobile Responsive - Stack Panels Vertically */
+/* Responsive Design - Move .right below .left in mobile */
 @media (max-width: 768px) {
   main {
     flex-direction: column;
   }
 
-  .left, .right {
+  main .left,
+  main .right {
     flex-basis: 100%;
-    min-height: 45vh;
+    min-height: 40vh;
   }
 }
 
-/* Titles */
+/* Panel Titles */
 .panel-title {
-  font-size: 1.4rem;
+  color: white;
+  font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 0.8rem;
 }
 
 /* Custom Scrollbar */
-.left .code::-webkit-scrollbar {
+main .left .code::-webkit-scrollbar {
   width: 6px;
 }
 
-.left .code::-webkit-scrollbar-track {
+main .left .code::-webkit-scrollbar-track {
   background: #090e13;
 }
 
-.left .code::-webkit-scrollbar-thumb {
+main .left .code::-webkit-scrollbar-thumb {
   background-color: #34495e;
   border-radius: 10px;
   border: 2px solid #090e13;
 }
 
-.left .code {
+main .left .code {
   scrollbar-width: thin;
   scrollbar-color: #34495e #090e13;
 }
 
 /* Button Styling */
 .btn {
-  margin-top: 10px;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
   cursor: pointer;
-  background-color: #ff007f;
-  padding: 0.7rem 1.5rem;
-  border-radius: 8px;
+  user-select: none;
+  display: inline-block;
+  background-color: black;
+  padding: 0.5rem 2rem;
+  border-radius: 10px;
   color: white;
   font-weight: bold;
   text-align: center;
   transition: all 0.3s ease-in-out;
-  border: none;
-  font-size: 1rem;
-  outline: none;
+  border: 2px solid transparent;
 }
 
-/* Button Effects */
+/* Hover and Click Effects */
 .btn:hover {
-  background-color: #e60073;
+  background-color: #222;
+  border-color: aqua;
 }
 
 .btn:active {
   transform: scale(0.95);
-  background-color: #cc0066;
+  background-color: rgb(20, 20, 20);
 }
 
 /* Code Editor */
-.left .code pre,
+main .left .code pre,
 .left .code {
   background-color: #090e13;
+  margin: 0;
+  padding: 0;
   width: 100%;
   height: 100%;
 }
 
-/* Remove Editor Border */
 textarea.npm__react-simple-code-editor__textarea {
   outline: none;
-  border: none;
 }
 
-/* Skeleton Loader */
+/* Dark Skeleton Loader */
 .skeleton-loader {
   width: 100%;
   height: 100%;
-  border-radius: 10px;
   background: linear-gradient(90deg, #2c2c2c 25%, #3b3b3b 50%, #2c2c2c 75%);
   background-size: 200% 100%;
-  animation: skeleton-loading 1.5s infinite ease-in-out;
+  animation: loading 1.5s infinite ease-in-out;
+  border-radius: 10px;
 }
 
-/* Skeleton Loading Animation */
-@keyframes skeleton-loading {
+@keyframes loading {
   0% {
     background-position: 200% 0;
   }

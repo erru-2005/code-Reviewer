@@ -5,27 +5,20 @@ import Editor from "react-simple-code-editor";
 import "./App.css";
 import axios from "axios";
 import Markdown from "react-markdown";
-import rehypeHighlights from "rehype-highlight";
+import rehypeHighlights from 'rehype-highlight';
 import "highlight.js/styles/github-dark.css";
 import ErrorBoundary from "./ErrorBoundary";
 
 function App() {
   const [code, setCode] = useState(``);
   const [review, setReview] = useState(``);
-  const [loading, setLoading] = useState(false);
 
   async function codeReview() {
-    setLoading(true);
-    try {
-      const resp = await axios.post(
-        "https://code-reviewer-z9xy.onrender.com/ai/get-response",
-        { code }
-      );
-      setReview(resp.data || "Something went wrong");
-    } catch (error) {
-      setReview("Error fetching review.");
-    } finally {
-      setLoading(false);
+    const resp = await axios.post("https://code-reviewer-z9xy.onrender.com/ai/get-response", {code});
+    if (!resp.data) {
+      setReview("Something went wrong");
+    } else {
+      setReview(resp.data);
     }
   }
 
@@ -36,9 +29,7 @@ function App() {
   return (
     <>
       <main>
-        {/* Left Panel */}
         <div className="left">
-          <h2 className="panel-title">Add Code Here to Review</h2>
           <div className="code">
             <Editor
               value={code}
@@ -46,28 +37,22 @@ function App() {
               highlight={(code) =>
                 prism.highlight(code, prism.languages.javascript, "javascript")
               }
-              padding={10}
+              padding={6}
               style={{
                 overflow: "auto",
                 width: "100%",
                 height: "100%",
+                
               }}
             />
           </div>
-          <button className="btn" onClick={codeReview}>
+          <div className="btn" onClick={codeReview}>
             Review
-          </button>
+          </div>
         </div>
-
-        {/* Right Panel */}
         <div className="right">
-          <h2 className="panel-title">Output</h2>
           <ErrorBoundary>
-            {loading ? (
-              <div className="skeleton-loader"></div>
-            ) : (
-              <Markdown rehypePlugins={[rehypeHighlights]}>{review}</Markdown>
-            )}
+            <Markdown rehypePlugins={[rehypeHighlights]}>{review}</Markdown>
           </ErrorBoundary>
         </div>
       </main>
