@@ -39,7 +39,7 @@ function App() {
         {/* Left Panel */}
         <div className="left">
           <h2 className="panel-title">Add Code Here to Review</h2>
-          <div className="code">
+          <div className="code-container">
             <Editor
               value={code}
               onValueChange={(code) => setCode(code)}
@@ -47,11 +47,7 @@ function App() {
                 prism.highlight(code, prism.languages.javascript, "javascript")
               }
               padding={10}
-              style={{
-                overflow: "auto",
-                width: "100%",
-                height: "100%",
-              }}
+              className="code-editor"
             />
           </div>
           <div className="btn" onClick={codeReview}>
@@ -63,11 +59,13 @@ function App() {
         <div className="right">
           <h2 className="panel-title">Output</h2>
           <ErrorBoundary>
-            {loading ? (
-              <div className="skeleton-loader"></div>
-            ) : (
-              <Markdown rehypePlugins={[rehypeHighlights]}>{review}</Markdown>
-            )}
+            <div className="review-container">
+              {loading ? (
+                <div className="skeleton-loader"></div>
+              ) : (
+                <Markdown rehypePlugins={[rehypeHighlights]}>{review}</Markdown>
+              )}
+            </div>
           </ErrorBoundary>
         </div>
       </main>

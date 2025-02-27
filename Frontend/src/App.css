@@ -1,3 +1,4 @@
+/* Reset and Global Styles */
 * {
   margin: 0;
   padding: 0;
@@ -7,8 +8,12 @@
 html, body, #root {
   height: 100%;
   width: 100%;
+  background-color: #0a0a0a;
+  color: white;
+  font-family: Arial, sans-serif;
 }
 
+/* Main Layout */
 main {
   height: 100%;
   width: 100%;
@@ -18,77 +23,55 @@ main {
   flex-wrap: wrap;
 }
 
-/* Left and Right Panels */
-main .left,
-main .right {
+/* Panels */
+.left, .right {
   flex: 1;
   border-radius: 0.7rem;
-  background-color: rgb(100, 157, 207);
+  background-color: #111;
   display: flex;
   flex-direction: column;
-  position: relative;
-  min-height: 50vh; /* Ensure both sections have enough height */
-}
-
-main .left {
-  background-color: #090e13;
-  border: 0.1rem solid aqua;
+  min-height: 50vh;
+  overflow: hidden;
   padding: 1rem;
+  transition: all 0.3s ease-in-out;
 }
 
-main .right {
-  background-color: #040404;
+.left {
+  border: 0.1rem solid aqua;
+}
+
+.right {
   border: 0.1rem solid purple;
-  padding: 1.3rem;
-  overflow: auto;
-}
-
-/* Responsive Design - Move .right below .left in mobile */
-@media (max-width: 768px) {
-  main {
-    flex-direction: column;
-  }
-
-  main .left,
-  main .right {
-    flex-basis: 100%;
-    min-height: 40vh;
-  }
 }
 
 /* Panel Titles */
 .panel-title {
-  color: white;
   font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 0.8rem;
+  color: #f0f0f0;
 }
 
-/* Custom Scrollbar */
-main .left .code::-webkit-scrollbar {
-  width: 6px;
+/* Code Editor */
+.code-container {
+  flex: 1;
+  overflow: auto;
+  background-color: #090e13;
+  padding: 0.5rem;
+  border-radius: 5px;
 }
 
-main .left .code::-webkit-scrollbar-track {
-  background: #090e13;
-}
-
-main .left .code::-webkit-scrollbar-thumb {
-  background-color: #34495e;
-  border-radius: 10px;
-  border: 2px solid #090e13;
-}
-
-main .left .code {
-  scrollbar-width: thin;
-  scrollbar-color: #34495e #090e13;
+/* Review Output */
+.review-container {
+  flex: 1;
+  overflow: auto;
+  background-color: #181818;
+  padding: 0.5rem;
+  border-radius: 5px;
 }
 
 /* Button Styling */
 .btn {
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
   cursor: pointer;
   user-select: none;
   display: inline-block;
@@ -100,9 +83,10 @@ main .left .code {
   text-align: center;
   transition: all 0.3s ease-in-out;
   border: 2px solid transparent;
+  margin-top: auto;
+  align-self: flex-end;
 }
 
-/* Hover and Click Effects */
 .btn:hover {
   background-color: #222;
   border-color: aqua;
@@ -113,21 +97,7 @@ main .left .code {
   background-color: rgb(20, 20, 20);
 }
 
-/* Code Editor */
-main .left .code pre,
-.left .code {
-  background-color: #090e13;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-}
-
-textarea.npm__react-simple-code-editor__textarea {
-  outline: none;
-}
-
-/* Dark Skeleton Loader */
+/* Skeleton Loader */
 .skeleton-loader {
   width: 100%;
   height: 100%;
@@ -138,10 +108,18 @@ textarea.npm__react-simple-code-editor__textarea {
 }
 
 @keyframes loading {
-  0% {
-    background-position: 200% 0;
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  main {
+    flex-direction: column;
   }
-  100% {
-    background-position: -200% 0;
+
+  .left, .right {
+    flex-basis: 100%;
+    min-height: 40vh;
   }
 }
